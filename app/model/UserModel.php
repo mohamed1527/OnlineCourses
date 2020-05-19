@@ -107,7 +107,7 @@ $sql = "SELECT * FROM User where Email='$email' AND Password='$password'";
 $dbh = new Dbh();
 $result = $dbh->query($sql);
 $row=$dbh->fetchRow();
-echo $row;
+//echo $row;
 
 if (!empty($row)){
   session_start();
