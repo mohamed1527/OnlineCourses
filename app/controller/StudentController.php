@@ -11,12 +11,11 @@ class StudnetController extends Controller
         $fname = $_REQUEST['FirstName'];
         $lname = $_REQUEST['LastName'];
         $email = $_REQUEST['Email'];
-        $password = $_REQUEST['Password'];
+        $image = $_REQUEST['Image'];
         $phone = $_REQUEST['Phone'];
-       // $attendence = $_SESSION['Attendence'];
-        echo $id;
-        echo $fname;
-        $this->model->editaccount($id,$fname,$lname,$email,$password,$phone);
+        $address = $_REQUEST['Address'];
+        // $attendence = $_SESSION['Attendence'];
+        $this->model->editaccount($id,$fname,$lname,$email,$image,$phone,$address);
     }
 
 }

@@ -5,9 +5,11 @@
 class Student extends User{
     private $id;
     private $attendence;
+    private $address;
 
-    function __construct($attendence="") {
+    function __construct($attendence="",$address="") {
         $this->attendence = $attendence;
+        $this->address = $address;
     }
 
     public function getID()
@@ -24,21 +26,29 @@ class Student extends User{
     public function getAttedence(){
         return $this->attendence;
     }
+    public function setAddress($address){
+        $this->address = $address;
+    }
+    public function getAddress(){
+        return $this->address;
+    }
 
-    function editaccount($id,$fname,$lname,$email,$password,$phone)
+    function editaccount($id,$fname,$lname,$email,$image,$phone,$address)
     {
         // Attempt insert query execution
         $id = $_POST['id'];
         $fname = $_POST['FirstName'];
         $lname = $_POST['LastName'];
-        $password = $_POST['Password'];
+       // $password = $_POST['Password'];
+        $image = $_POST['Image'];
         $phone = $_POST['Phone'];
+        $address = $_POST['Address'];
         //$attendence = $_POST['attendence'];
         $updateddate = date("Y/m/d H:i:s");
         
 
         $sql = "UPDATE User
-        SET FirstName = '$fname' , LastName = '$lname' , Email='$email' , Password ='$password' , Phone = $phone 
+        SET FirstName = '$fname' , LastName = '$lname' , Email='$email', Phone = $phone , Image ='$image'
         WHERE ID=$id";
     
         $sql1 = "SELECT ID FROM User WHERE Email='$email'";
@@ -52,7 +62,7 @@ class Student extends User{
          // echo $uid;
         // echo "<script>alert('Updated successfully')</script>";
           $sql2 = "UPDATE Student
-        SET  UpdatedDate = '$updateddate'
+        SET Address = '$address' , UpdatedDate = '$updateddate'
         WHERE Student_ID=$uid";
         //echo $sql2;
         $result = $dbh->query($sql2);
@@ -62,8 +72,9 @@ class Student extends User{
             $_SESSION['FirstName']=$fname;
             $_SESSION['LastName']=$lname;
             $_SESSION['email']=$email;
-            $_SESSION['password']=$password;
+            $_SESSION['Image']=$image;
             $_SESSION['Phone']=$phone;
+            $_SESSION['Address']=$address;
           echo "<script>alert('Updated successfully')</script>";
          
       } else{

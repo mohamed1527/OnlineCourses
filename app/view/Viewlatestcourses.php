@@ -29,7 +29,7 @@ class ViewLatestCourses extends View2{
         $str.=   '<div class="chip">';
         $str.=   '<img src="images/'.$section->getTeacher()->getImage().'" alt="Person" width="80" height="90">';
         $str.=    '<p>'.$section->getTeacher()->getFirstName().' <a href="index.html">view profile</a> </p>';     
-        $str.=      '<a href="sectiondesc.php?id='.$course->getID().'"><button>'.$section->getSectioncost().'</button>';
+        $str.=      '<a href="sectiondesc.php?id='.$section->getID().'"><button>'.$section->getSectioncost().'</button>';
         $str.=  '</div>
             </div>
           </div>';

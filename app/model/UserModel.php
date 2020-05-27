@@ -171,7 +171,7 @@ function signup($fname,$lname,$email,$password,$phone,$image,$createdDate){
        $row = $dbh->fetchRow($userID);
         
        $id = $row['ID'];     
-       $sql2 = "INSERT INTO  User_Type(UserType,User_Id) Values('Admin',($id));";
+       $sql2 = "INSERT INTO  User_Type(UserType,User_Id) Values('Student',($id));";
        if($dbh->query($sql2) == true){
          
        echo" Signup successfully";

@@ -31,14 +31,15 @@ class Teacher extends User{
     public function setExperience($experience){
         $this->experience = $experience;
     }
-    function editaccount($id,$fname,$lname,$email,$password,$phone,$career,$experience)
+    function editaccount($id,$fname,$lname,$email,$phone,$image,$career,$experience)
     {
         // Attempt insert query execution
         $id = $_POST['id'];
         $fname = $_POST['FirstName'];
         $lname = $_POST['LastName'];
-        $password = $_POST['Password'];
+       // $password = $_POST['Password'];
         $phone = $_POST['Phone'];
+        $image = $_POST['Image'];
         $career = $_POST['Career'];
         $experience = $_POST['Experience'];
         //$attendence = $_POST['attendence'];
@@ -46,7 +47,7 @@ class Teacher extends User{
         
 
         $sql = "UPDATE User
-        SET FirstName = '$fname' , LastName = '$lname' , Email='$email' , Password ='$password' , Phone = $phone 
+        SET FirstName = '$fname' , LastName = '$lname' , Email='$email' , Phone = $phone ,Image = '$image'
         WHERE ID=$id";
     
         $sql1 = "SELECT ID FROM User WHERE Email='$email'";
@@ -70,7 +71,9 @@ class Teacher extends User{
             $_SESSION['FirstName']=$fname;
             $_SESSION['LastName']=$lname;
             $_SESSION['email']=$email;
-            $_SESSION['password']=$password;
+            $_SESSION['Image']=$image;
+            $_SESSION['Career']=$career;
+            $_SESSION['Experience']=$experience;
             $_SESSION['Phone']=$phone;
           echo "<script>alert('Updated successfully')</script>";
          

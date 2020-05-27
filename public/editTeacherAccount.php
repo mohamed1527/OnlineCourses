@@ -75,7 +75,6 @@
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Phone</th>
                 <th>Image</th>
                 <th>Career</th>
@@ -90,7 +89,6 @@
     <td><input type="text"  id="FirstName" placeholder="Enter First name" name="FirstName" value="<?php echo $_SESSION['FirstName'];?>"></td>
     <td><input type="text"  id="LastName" placeholder="Enter Last name" name="LastName" value="<?php echo $_SESSION['LastName'];?>"></td>
     <td><input type="email"  id="Email" placeholder="Enter Email" name="Email" value="<?php echo $_SESSION['email'];?>"></td> 
-    <td><input type="text"  id="Password" placeholder="Enter Password" name="Password" value="<?php echo $_SESSION['password'];?>"></td>
     <td><input type="text"  id="Phone" placeholder="Enter Phone Number" name="Phone" value="<?php echo $_SESSION['Phone'];?>"></td>
     <td><input type="file"  id="Image" placeholder="Choose Image" name="Image" accept="image/gif, image/jpeg, image/png" value="<?php echo $_SESSION['Image'];?>"></td>
     <td><input type="text"  id="Career" placeholder="Enter Career" name="Career" value="<?php echo $_SESSION['Career'];?>"></td>
