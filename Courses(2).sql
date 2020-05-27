@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 12, 2020 at 06:33 PM
+-- Generation Time: May 27, 2020 at 04:34 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -93,10 +93,10 @@ CREATE TABLE `Payment` (
   `ID` int(11) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Discount` int(11) NOT NULL,
+  `Tax` int(11) NOT NULL,
   `TotalPrice` int(11) NOT NULL,
   `Student_ID` int(11) NOT NULL,
-  `CreatedDate` datetime NOT NULL,
-  `UpdatedDate` datetime NOT NULL
+  `CreatedDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -133,6 +133,7 @@ CREATE TABLE `Student` (
   `ID` int(11) NOT NULL,
   `Student_ID` int(11) NOT NULL,
   `Section_ID` int(11) DEFAULT NULL,
+  `Address` text NOT NULL,
   `Attendence` int(11) NOT NULL,
   `UpdatedDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -141,9 +142,8 @@ CREATE TABLE `Student` (
 -- Dumping data for table `Student`
 --
 
-INSERT INTO `Student` (`ID`, `Student_ID`, `Section_ID`, `Attendence`, `UpdatedDate`) VALUES
-(1, 25, 5, 12, '2020-05-12 00:14:02'),
-(2, 7, 10, 12, '2020-05-12 00:00:00');
+INSERT INTO `Student` (`ID`, `Student_ID`, `Section_ID`, `Address`, `Attendence`, `UpdatedDate`) VALUES
+(3, 48, 7, '308 Tagmo3 ELawl', 12, '2020-05-27 15:51:58');
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,7 @@ CREATE TABLE `Teacher` (
 --
 
 INSERT INTO `Teacher` (`ID`, `Teacher_ID`, `Career`, `Experience`, `Section_ID`, `UpdatedDate`) VALUES
-(1, 16, 'Teaching English St.Fatima Language School', 'Learning English for more than 20 yeaars', 5, '2020-05-12 04:26:47');
+(3, 50, 'Studied at cairo university and teaching for 10 years at bussiness adminstarion', '20 Year At Teaching Arabic', 7, '2020-05-27 16:31:26');
 
 -- --------------------------------------------------------
 
@@ -181,24 +181,17 @@ CREATE TABLE `User` (
   `Password` varchar(255) NOT NULL,
   `Phone` int(13) NOT NULL,
   `Image` varchar(255) DEFAULT NULL,
-  `CreatedDate` datetime NOT NULL,
-  `UpdatedDate` datetime DEFAULT NULL
+  `CreatedDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `User`
 --
 
-INSERT INTO `User` (`ID`, `FirstName`, `LastName`, `Email`, `Password`, `Phone`, `Image`, `CreatedDate`, `UpdatedDate`) VALUES
-(7, 'Mohamed', 'Osama', 'mika@gmail.com', '123456', 1023903532, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, 'Admin', 'Admin', 'admin@hotmail.com', '123456', 1003153562, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(16, 'Teacher', 'Teacher', 'Teacher@gmail.com', '123456', 1003153563, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(17, 'Zeiad', 'Hossam', 'Zoz@gmail.com', '123456', 1154389678, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'Moataz', 'Lasheen', 'Weza@yahoo.com', '123456', 1023903537, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(22, 'Hanan', 'Medhat', 'hanan@gmail.com', '123456', 1154389678, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, 'Tarek', 'Medhat', 'maged@gmail.com', '123456', 103153562, NULL, '2020-05-11 22:53:15', '0000-00-00 00:00:00'),
-(38, 'Mohamed', 'Ayman', 'Ayman@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1003153562, NULL, '2020-05-12 13:24:58', '2020-05-12 15:11:27'),
-(39, 'Amr', 'Ehab', 'amrehab@yahoo.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1023903532, NULL, '2020-05-12 15:47:25', NULL);
+INSERT INTO `User` (`ID`, `FirstName`, `LastName`, `Email`, `Password`, `Phone`, `Image`, `CreatedDate`) VALUES
+(48, 'Mohamed', 'Ayman', 'ayman@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1003153564, 'team-2.jpg', '2020-05-27 15:39:59'),
+(49, 'Admin', 'Admin', 'admin@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1003153562, 'team-7.jpg', '2020-05-27 15:56:52'),
+(50, 'Manar', 'Medhat', 'Manar@yahoo.com', 'e10adc3949ba59abbe56e057f20f883e', 1154389672, 'manar.jpeg', '2020-05-27 15:58:05');
 
 -- --------------------------------------------------------
 
@@ -216,14 +209,9 @@ CREATE TABLE `User_Type` (
 --
 
 INSERT INTO `User_Type` (`UserType`, `User_Id`) VALUES
-('Student', 7),
-('Admin', 15),
-('Teacher', 16),
-('Admin', 17),
-('Student', 18),
-('Student', 25),
-('Student', 38),
-('Student', 39);
+('Student', 48),
+('Admin', 49),
+('Teacher', 50);
 
 --
 -- Indexes for dumped tables
@@ -329,19 +317,19 @@ ALTER TABLE `Section`
 -- AUTO_INCREMENT for table `Student`
 --
 ALTER TABLE `Student`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Teacher`
 --
 ALTER TABLE `Teacher`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables
