@@ -75,7 +75,6 @@
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Phone</th>
                 <th>Image</th>
                 <th>UserType</th>

@@ -219,6 +219,10 @@ function count3(){
     <input class="input-field" type="text" placeholder="Mobile number" name="phone">
   </div>
   <div class="input-container">
+    <i class="fa fa-home icon"></i>
+    <input class="input-field" type="text" placeholder="Address" name="Address">
+  </div>
+  <div class="input-container">
     <i class="fa fa-image icon"></i>
     <input type="file" name="img" accept="image/gif, image/jpeg, image/png" /><br>
   </div>  

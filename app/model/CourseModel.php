@@ -7,6 +7,7 @@ class Course extends Model{
         private $coursename;
         private $courseid;
         private $coursedescription;
+        private $courseimage;
         private $coursetype;
         private $coursecost;
         private $courseweeks;
@@ -16,10 +17,11 @@ class Course extends Model{
         private $sections;
         private $dbh;
 
-    function __construct($sections="",$teacher="",$coursename="",$courseid="",$coursetype="",$startdate="",$enddate="") {
+    function __construct($sections="",$teacher="",$coursename="",$courseid="",$coursetype="",$courseimage="",$startdate="",$enddate="") {
             $this->coursename = $coursename;
             $this->courseid = $courseid;
             $this->coursetype= $coursetype;
+            $this->courseimage = $courseimage;
             $this->startdate = $startdate;
             $this->enddate = $enddate;
             $this->sections = array();
@@ -36,7 +38,12 @@ class Course extends Model{
           {
               return $this->sections;
           }
-
+          function getCourseImage() {
+            return $this->courseimage;
+          }
+          function setCourseImage($courseimage) {
+            return $this->courseimage = $courseimage;
+          }
           function getCourseName() {
             return $this->coursename;
           }
@@ -112,6 +119,7 @@ class Course extends Model{
               $course->setCourseType($row['CourseType']);
               $course->setCourseCost($row['CourseCost']);
               $course->setCourseDescription($row['CourseDescription']);
+              $course->setCourseImage($row['CourseImage']);
               $course->setCourseWeeks($row['CourseWeeks']);
               $course->setCourseHours($row['CourseHours']);
               $course->setStart($row['StartDate']);
@@ -125,11 +133,12 @@ class Course extends Model{
             return $courses;
           }
       
-static function addcourses($coursename,$coursedescription,$courseweeks,$coursehours,$coursetype,$coursecost,$startdate,$enddate,$createdDate){
+static function addcourses($coursename,$courseweeks,$coursehours,$coursetype,$coursedescription,$courseimage,$coursecost,$startdate,$enddate,$createdDate){
 
         $coursename=$_POST['CourseName'];
         //$courseid=$_POST['CourseID'];
         $coursedescription = $_POST['CourseDescription'];
+        $courseimage = $_POST['CourseImage'];
         $courseweeks=$_POST['CourseWeeks'];
         $coursehours=$_POST['CourseHours'];
         $coursetype=$_POST['CourseType'];
@@ -139,7 +148,7 @@ static function addcourses($coursename,$coursedescription,$courseweeks,$courseho
         $createdDate = date("Y/m/d H:i:s");
 
 
-  $sql = "INSERT into  Course(CourseName,CourseType,CourseCost,CourseDescription) Values('$coursename','$coursetype','$coursecost','$coursedescription');";
+  $sql = "INSERT into  Course(CourseName,CourseType,CourseCost,CourseDescription,CourseImage) Values('$coursename','$coursetype','$coursecost','$coursedescription','$courseimage');";
   $sql1 = "SELECT ID FROM Course WHERE CourseName='$coursename'";
   //$sql .= "INSERT INTO  Course_Time_Info(CourseWeeks,CourseHours,StartDate,End_Date,CourseID) Values('$courseweeks','$coursehours','$startdate','$enddate','$courseid');";
   $dbh = new Dbh();
@@ -163,12 +172,13 @@ static function addcourses($coursename,$coursedescription,$courseweeks,$courseho
         
     }
   }
-function editcourse($id,$coursename,$courseid,$coursetype,$coursecost,$coursedescription,$courseweeks,$coursehours,$startdate,$enddate,$updateddate){
+function editcourse($id,$coursename,$coursetype,$coursecost,$coursedescription,$courseimage,$courseweeks,$coursehours,$startdate,$enddate,$updateddate){
   // Attempt insert query execution
   $id = $_POST['id'];
   $coursename=$_POST['CourseName'];
-  $courseid=$_POST['CourseID'];
+  //$courseid=$_POST['CourseID'];
   $coursedescription = $_POST['CourseDescription'];
+  $courseimage = $_POST['CourseImage'];
   $coursetype=$_POST['CourseType'];
   $coursecost=$_POST['CourseCost'];
   $courseweeks=$_POST['CourseWeeks'];
@@ -178,15 +188,16 @@ function editcourse($id,$coursename,$courseid,$coursetype,$coursecost,$coursedes
   $updateddate = date("Y/m/d H:i:s");
 
   $sql = "UPDATE Course 
-  SET CourseName = '$coursename' , CourseID = '$courseid', CourseType ='$coursetype' , CourseCost = $coursecost ,  CourseDescription='$coursedescription'
-  WHERE CourseID='$courseid'";
+  SET CourseName = '$coursename' , CourseType ='$coursetype' , CourseCost = $coursecost ,  CourseDescription='$coursedescription' , CourseImage='$courseimage'
+  WHERE ID='$id'";
 
+  //echo $sql;
   $dbh = new dbh();
   if($dbh->query($sql) == true){
 
     $sql2 = "UPDATE Course_Duration
   SET   CourseWeeks='$courseweeks' , CourseHours='$coursehours' , StartDate='$startdate' , End_Date='$enddate' , UpdatedDate='$updateddate'
-  WHERE CourseID='$courseid'";
+  WHERE CourseID='$id'";
   //echo $sql2;
   $result = $dbh->query($sql2);
   if($dbh->query($sql2) === true){
@@ -205,7 +216,7 @@ function deletecourse($courseid){
   $dbh = new dbh();
 
   if($dbh->query($sql) == true){
-    $sql1 ="DELETE from Course where CourseID='$courseid';";
+    $sql1 ="DELETE from Course where ID='$courseid';";
 
   $result = $dbh->query($sql1);
   if($dbh->query($sql1) === true){

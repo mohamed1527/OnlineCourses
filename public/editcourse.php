@@ -22,6 +22,7 @@ foreach($model->getCourses() as $course)
         $coursetype = $course->getCourseType();
         $coursecost = $course->getCourseCost();
         $coursedescription = $course ->getCourseDescription();
+        $courseimage = $course ->getCourseImage();
         $courseweeks = $course->getCourseWeeks();
         $coursehours = $course->getCourseHours();
         $startdate = $course->getStart();
@@ -92,6 +93,7 @@ foreach($model->getCourses() as $course)
               <th>Type</th>
               <th>Cost</th>
               <th>Description</th>
+              <th>Image</th>
               <th>Weeks</th>
               <th>Hours</th>
               <th>StartDate</th>
@@ -109,6 +111,7 @@ foreach($model->getCourses() as $course)
     <td><input type="text"  id="CourseType" placeholder="Enter Course Type" name="CourseType" value="<?php echo $coursetype;?>"></td>
     <td><input type="text"  id="CourseCost" placeholder="Enter Course Cost" name="CourseCost" value="<?php echo $coursecost;?>"></td>
     <td><input type="text"  id="CourseDescription" placeholder="Enter Course Description" name="CourseDescription" value="<?php echo $coursedescription;?>"></td>
+    <td><input type="file"  id="CourseImage" placeholder="Enter Course Image" name="CourseImage" accept="image/gif, image/jpeg, image/png" value="<?php echo $courseimage;?>"></td>
     <td><input type="text"  id="CourseWeeks" placeholder="Enter Course Weeks" name="CourseWeeks" value="<?php echo $courseweeks;?>"></td>
     <td><input type="text"  id="CourseHours" placeholder="Enter Course Hours" name="CourseHours" value="<?php echo $coursehours;?>"></td>
     <td><input type="date"  id="StartDate"name="StartDate" value="<?php echo $startdate;?>"></td>

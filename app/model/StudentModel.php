@@ -4,11 +4,10 @@
   require_once(__ROOT__ . "model/UserModel.php");
 class Student extends User{
     private $id;
-    private $attendence;
     private $address;
 
-    function __construct($attendence="",$address="") {
-        $this->attendence = $attendence;
+    function __construct($address="") {
+        
         $this->address = $address;
     }
 
@@ -19,12 +18,6 @@ class Student extends User{
     public function setID($id)
     {
         $this->id = $id;
-    }
-    public function setAttendence($attendence){
-        $this->attendence = $attendence;
-    }
-    public function getAttedence(){
-        return $this->attendence;
     }
     public function setAddress($address){
         $this->address = $address;

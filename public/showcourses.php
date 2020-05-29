@@ -76,6 +76,7 @@
               <th>Type</th>
               <th>Cost</th>
               <th>Description</th>
+              <th>Image</th>
               <th>Weeks</th>
               <th>Hours</th>
               <th>StartDate</th>
@@ -96,6 +97,7 @@
     <td><input type="text"  id="CourseType" placeholder="Enter CourseType" name="CourseType" ></td>
     <td><input type="text"  id="CourseCost" placeholder="Enter CourseCost" name="CourseCost" ></td>
     <td><input type="text"  id="CourseDescription" placeholder="Enter Description" name="CourseDescription" ></td>
+    <td><input type="file"  id="CourseImage" placeholder="Enter Image" name="CourseImage" accept="image/gif, image/jpeg, image/png"></td>
     <td><input type="text"  id="CourseWeeks" placeholder="Enter CourseWeeks" name="CourseWeeks" ></td>
     <td><input type="text"  id="CourseHours" placeholder="Enter CourseHours" name="CourseHours" ></td>
     <td><input type="Date"  id="StartDate" placeholder="StartDate" name="StartDate" ></td>

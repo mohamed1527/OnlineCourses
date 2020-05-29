@@ -14,7 +14,7 @@ class StudnetController extends Controller
         $image = $_REQUEST['Image'];
         $phone = $_REQUEST['Phone'];
         $address = $_REQUEST['Address'];
-        // $attendence = $_SESSION['Attendence'];
+       // $attendence = $_SESSION['Attendence'];
         $this->model->editaccount($id,$fname,$lname,$email,$image,$phone,$address);
     }
 

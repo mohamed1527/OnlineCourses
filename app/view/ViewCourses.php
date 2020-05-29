@@ -4,13 +4,15 @@ class ViewCourses extends View3{
 	
     public function coursesdescription(){
         $id = $_GET['id'];
+        $cid = $_GET['cid'];
         $str = "";
-        $courses = $this->model->getCourses();
-    
-            foreach($courses[$id]->getSections() as $section){
+        $courses = $this->model->getCourses()[$cid];
+        //$section = $courses->getSections();
+
+            foreach($courses->getSections() as $section){
 
                 $str = $str . '<div class="card mb-3">';
-                $str .= '<img src="images/literature.jpg" class="card-img-top" alt="Error">';
+                $str .= '<img src="images/'.$courses->getCourseImage().'" class="card-img-top" alt="Error">';
                 $str .='<div class="card-body">';
                 $str .='<h2 class="card-title">$'.$section->getSectioncost().'</h2>';
                 $str .='<a href="#" class="btn btn-primary">Buy Now</a>';

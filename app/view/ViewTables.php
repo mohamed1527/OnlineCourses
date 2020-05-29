@@ -10,14 +10,14 @@ class ViewTable extends View{
             $str= $str . '<tr>'.
             '<td> ' . $course->getID() . " </td>".
             '<td> ' . $course->getCourseName() . " </td> ".
-            '<td>' . $course->getCourseID() . " </td> ".
             '<td> ' . $course->getCourseType() . " </td> ".
             '<td> ' . $course->getCourseCost() . " </td> ".
             '<td> ' . $course->getCourseDescription() . " </td> ".
+            '<td> ' .$course->getCourseImage() . " </td> ".
             '<td> ' . $course->getCourseWeeks() . " </td> ".
             '<td> ' . $course->getCourseHours() . " </td> ".
             '<td> ' . $course->getStart() . " </td> ".
-            '<td> ' . $course->getEnd() . " </td> ".
+            '<td>' . $course->getEnd() . " </td> ".
             '<td><a href="viewcourses.php?id='.$course->getID().'">View Course </a></td> '.
             '<td><a href="editcourse.php?id='.$course->getID().'">Edit Course </a></td> '.
             '<td><a href="deletecourse.php?id='.$course->getID().'">Delete Course </a></td> '.
@@ -39,7 +39,6 @@ class ViewTable extends View{
             '<td> ' . $user->getFirstName() . "</td>".
             '<td> ' . $user->getLastName() . " </td> ".
             '<td>' . $user->getEmail() . " </td> ".
-            '<td> ' . $user->getPassword() . " </td> ".
             '<td> ' . $user->getPhone() . " </td> ".
             '<td> ' . $user->getImage() . " </td> ".
             '<td> ' . $user->getUserType() . " </td> ".

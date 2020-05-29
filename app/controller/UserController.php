@@ -16,13 +16,12 @@ class UserController extends Controller{
 		 $lname = $_REQUEST['lastname'];
      $email = $_REQUEST['email'];
      $password=$_REQUEST['password'];
-		 //$password = $_REQUEST['password'];
 		 $phone = $_REQUEST['phone'];
-     $image=$_FILES["img"]["name"];
-    // $hashPass=sha1($_POST['Password']);
+     $image=$_FILES['img']['name'];
+     $address=$_REQUEST['Address'];
      $createdDate = date("Y/m/d H:i:s");
      
-     $this->model->signup($fname,$lname,$email,$password,$phone,$image,$createdDate);
+     $this->model->signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDate);
 
     }
     public function profileController(){
@@ -37,14 +36,13 @@ class UserController extends Controller{
 		  $lname = $_REQUEST['LastName'];
 		  $email = $_REQUEST['Email'];
      // $password = $_REQUEST['Password'];
-      $password=password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
+      $password=$_REQUEST['Password'];
       $phone = $_REQUEST['Phone'];
-
-      //$image=$_FILES["img"]["name"];
+      $image = $_REQUEST['Image'];
       $usertype = $_REQUEST['UserType'];
       $createdDate = date("Y/m/d H:i:s");
       
-      $this->model->adduser($fname,$lname,$email,$hashPass,$phone,$usertype,$createdDate);
+      $this->model->adduser($fname,$lname,$email,$password,$phone,$image,$usertype,$createdDate);
     }
 
     public function EditUser(){
@@ -53,11 +51,11 @@ class UserController extends Controller{
 		  $lname = $_REQUEST['LastName'];
 		  $email = $_REQUEST['Email'];  
       $phone = $_REQUEST['Phone'];
-      //$image=$_FILES["Image"]["name"];
+      $image=$_REQUEST['Image'];
       $usertype = $_REQUEST['UserType'];
       $updateddate = date("Y/m/d H:i:s");
 
-      $this->model->edituser($id,$fname,$lname,$email,$phone,$usertype,$updateddate);
+      $this->model->edituser($id,$fname,$lname,$email,$phone,$image,$usertype,$updateddate);
     }
     public function DeleteUser(){
       $id = $_REQUEST['id'];

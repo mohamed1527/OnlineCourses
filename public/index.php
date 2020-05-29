@@ -116,7 +116,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 	    </div>
 	  </div>
 <br>
-
+<section>
 <?php
     require_once(__ROOT__ . "view/Viewlatestcourses.php");
     $model = new Course();

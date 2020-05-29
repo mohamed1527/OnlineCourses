@@ -20,7 +20,7 @@ foreach($model->getUsers() as $user)
         $fname = $user->getFirstName();
         $lname = $user->getLastName();
         $email = $user->getEmail();
-        $phone = $user ->getPhone();
+        $phone = $user->getPhone();
         $image = $user ->getImage();
         $usertype= $user->getUserType();
     }
@@ -86,8 +86,7 @@ foreach($model->getUsers() as $user)
                 <th>ID</th>
                 <th>FirstName</th>
                 <th>LastName</th>
-                <th>Email</th>
-              
+                <th>Email</th>            
                 <th>Phone</th>
                 <th>Image</th>
                 <th>UserType</th>

@@ -116,7 +116,7 @@ class Section extends Model{
               $student->setEmail($row['Email']);
               $student->setPassword($row['Password']);
               $student->setPhone($row['Phone']);  
-              $student->setAttendence($row['Attendence']);  
+              $student->setAddress($row['Address']);  
               $students[$row['ID']] = $student;
             }
             return $students;
