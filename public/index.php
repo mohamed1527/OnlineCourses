@@ -117,12 +117,199 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 	  </div>
 <br>
 
-<?php
-    require_once(__ROOT__ . "view/Viewlatestcourses.php");
-    $model = new Course();
-    $view = new ViewLatestCourses($controller, $model);
-    echo $view->latestcourses();
-    ?>  
+<section class="ftco-section">
+     <h1 style="text-align: center;">Latest <span> Courses </span></h1>
+     <hr>
+     <br>
+
+
+      </div>
+      <div class="container"> 
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+             <div class="card">
+              <img src="images/literature.jpg"  style="width:100%;">
+               <h3>Literature</h3>
+                <div class="chip">
+                 <img src="images/manar.jpeg" alt="Person" width="80" height="90">
+                  <p>Manar Ahmed </p>
+                  
+                
+                  
+                 </div>
+                <button>30$</button>
+             </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+            <div class="card">
+              <img src="images/Math.jpg"  style="width:100%">
+               <h3>Math</h3>
+                <div class="chip">
+                 <img src="images/reham.jpeg" alt="Person" width="80" height="90">
+                  <p>Reham Hassan   </p>
+                  
+                 </div>
+
+  <button>60$</button>
+</div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              
+             <div class="card">
+              <img src="images/Arabic.jpg" style="width:100%">
+               <h3>Arabic OL</h3>
+                <div class="chip">
+                 <img src="images/awad.jpeg" alt="Person" width="80" height="90">
+                  <p>Mahmoud Awad    </p>
+                 </div>
+  <button>45$</button>
+</div>
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+         
+   <div class="card">
+              <img src="images/Economics.jpg"  style="width:100%">
+               <h3>Economics Busit</h3>
+                <div class="chip">
+                 <img src="images/sally.jpeg" alt="Person" width="80" height="90">
+                  <p>Sally Mahfouz    </p>
+                 </div>
+  <button>40$</button>
+</div>
+            </div>
+          </div>
+        </div>
+        
+
+          <div class="row d-flex">
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              
+           <div class="card">
+              <img src="images/ESL.jpg"  style="width:100%">
+               <h3>ESL</h3>
+                <div class="chip">
+                 <img src="images/reem.jpg" alt="Person" width="80" height="90">
+                  <p>Reem  Sayed   </p>
+                 </div>
+  <button>33$</button>
+</div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+            <div class="card">
+              <img src="images/french.jpg"  style="width:100%">
+               <h3>French</h3>
+                <div class="chip">
+                 <img src="images/marwa.jpeg" alt="Person" width="80" height="90">
+                  <p>Marwa Ahmed  </p>
+                 </div>
+  <button>52$</button>
+</div>
+            </div>
+          </div>
+                 <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              
+       <div class="card">
+              <img src="images/biology.jpg"  style="width:100%">
+               <h3>Biology</h3>
+                <div class="chip">
+                 <img src="images/heba.jpeg" alt="Person" width="80" height="90">
+                  <p>Heba Sadek </p>
+                 </div>
+  <button>78$</button>
+</div>
+            </div>
+          </div>
+                 <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              
+     <div class="card">
+              <img src="images/Enviromental.jpg"  style="width:100%">
+               <h3>Enviromental</h3>
+                <div class="chip">
+                 <img src="images/assem.jpeg" alt="Person" width="80" height="90">
+                  <p>Abdel Monem </p>
+                 </div>  
+                 <button>60$</button>
+</div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+            <div class="card">
+              <img src="images/chemistry.jpg"  style="width:100%">
+               <h3>Chemistry OL</h3>
+                <div class="chip">
+                 <img src="images/amany.jpeg" alt="Person" width="80" height="90">
+                  <p>Amany Hamdy </p>
+                 </div>
+  <button>23$</button>
+</div>
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+            <div class="card">
+              <img src="images/literature.jpg"  style="width:100%">
+               <h3>Chemistry AL</h3>
+                <div class="chip">
+                 <img src="images/manar.jpeg" alt="Person" width="80" height="90">
+                  <p>Manar Ahmed </p>
+                 </div>
+  <button>50$</button>
+</div>
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+            <div class="card">
+              <img src="images/Arabic.jpg"  style="width:100%">
+               <h3>Chemistry AL</h3>
+                <div class="chip">
+                 <img src="images/awad.jpeg" alt="Person" width="80" height="90">
+                  <p>Mahmoud Awad</p>
+                 </div>
+  <button>60$</button>
+</div>
+            </div>
+          </div>
+
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+            <div class="card">
+              <img src="images/Economics.jpg"  style="width:100%">
+               <h3>Economics Busit</h3>
+                <div class="chip">
+                 <img src="images/sally.jpeg" alt="Person" width="80" height="90">
+                  <p>Sally Mahfouz  </p>
+                 </div>
+  <button>$70</button>
+</div>
+            </div>
+          </div>
+        </div>
+        
+</div>
+
+<button> <a href="choose.php"><h1>VIEW PROFILES</h1></a></button>
+    </section>
+
+
+
+
 </div>
 
        
@@ -365,5 +552,20 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
   <script src="../lib/js/google-map.js"></script>
   <script src="../lib/js/main.js"></script>
     
+
+
+
+  <?php
+/*
+    require_once(__ROOT__ . "view/Viewlatestcourses.php");
+    $model = new Course();
+    $view = new ViewLatestCourses($controller, $model);
+    echo $view->latestcourses();
+    */
+    ?> 
+
   </body>
+
+
+  
 </html>
