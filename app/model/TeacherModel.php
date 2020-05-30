@@ -54,7 +54,7 @@ class Teacher extends User{
     
         $dbh = new dbh();
         if($dbh->query($sql) == true){
-    
+          
           $userID = $dbh->query($sql1);
           $row = $dbh->fetchRow($userID);
           $uid = $row['ID'];
@@ -65,7 +65,7 @@ class Teacher extends User{
         WHERE Teacher_ID=$uid";
         //echo $sql2;
         $result = $dbh->query($sql2);
-      
+        
         if($dbh->query($sql2) === true){
             if(!isset($_SESSION)){session_start();}
             $_SESSION['FirstName']=$fname;
@@ -83,6 +83,37 @@ class Teacher extends User{
     
     }
     }
+
+
+  function readTeacher(){
+    $sql = "SELECT User.* , teacher.* FROM User INNER Join teacher
+      ON User.ID = teacher.Teacher_ID"  ;
+    $db = $this->connect();
+    $result = $db->query($sql);
+    if ($result->num_rows == 1){
+        $row = $db->fetchRow();
+        $this->$fname = $row['FirstName'];
+        $_SESSION['FirstName']=$row['FirstName'];
+        $this->$lname = $row['LastName'];
+        $_SESSION['LastName']=$row['LastName'];
+        $this->phone = $row["Phone"];
+        $this->career=$row["Career"];
+        $this->experience=$row["Experience"];
+    }
+    else {
+        $this->fname = "";
+        $this->lname = "";
+        $this->phone = "";
+        $this->career = "";
+        $this->experience = "";
+    }
+  }
+
+
+
+
+
+
 }
 
 ?>

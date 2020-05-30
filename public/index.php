@@ -365,5 +365,20 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
   <script src="../lib/js/google-map.js"></script>
   <script src="../lib/js/main.js"></script>
     
+
+
+
+  <?php
+/*
+    require_once(__ROOT__ . "view/Viewlatestcourses.php");
+    $model = new Course();
+    $view = new ViewLatestCourses($controller, $model);
+    echo $view->latestcourses();
+    */
+    ?> 
+
   </body>
+
+
+  
 </html>
