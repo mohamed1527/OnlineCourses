@@ -7,7 +7,7 @@ class ViewCourses extends View3{
         $cid = $_GET['cid'];
         $str = "";
         $courses = $this->model->getCourses()[$cid];
-        //$section = $courses->getSections();
+    
 
             foreach($courses->getSections() as $section){
 
