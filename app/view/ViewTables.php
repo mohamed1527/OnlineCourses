@@ -124,6 +124,26 @@ public function SectionsStudents(){
 
     return $str;
 }
+public function SectionsTeacher(){
+    $id=$_GET['id'];
+    $str = ""; 
+    $courses = $this->model->getCourses();
+    
+    foreach($courses[$id]->getSections() as $section){
+        $teacher = $section->getTeacher();
+        $str= $str . '<tr>'.
+        $str .= '<td>'.$teacher->getID().'</td>';
+        $str .= '<td>'.$teacher->getFirstName().'</td>';
+        $str .= '<td>'.$teacher->getLastName().'</td>';
+        $str .= '<td>'.$teacher->getEmail().'</td>';
+        $str .= '<td>'.$teacher->getPhone().'</td>';
+    }
+    $str.='</tr>';
+    
+
+
+    return $str;
+}
 //$section->getTeacher()->getCareer()
 }?>
  

@@ -77,7 +77,7 @@ class Bar extends View1{
 	    $str.='<li class="nav-item"><a href="sendmessage.php" class="nav-link">Send Messages</a></li>';
         $str.='<li class="nav-item"><a href="courses.html" class="nav-link">MyCourses</a></li>';
 	    $str.='<li class="nav-item"><a href="editaccount.php" class="nav-link">MyAccount</a></li>';
-	    $str.='<li class="nav-item"><a href="blog.html" class="nav-link">View Courses</a></li>';	          
+	    $str.='<li class="nav-item"><a href="invoice.php" class="nav-link">View Courses</a></li>';	          
 	    $str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';           
         $str.='</ul>';
 	    $str.='</div></div>

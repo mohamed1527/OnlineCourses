@@ -90,6 +90,7 @@ class Section extends Model{
             $dbh = new Dbh();
             $result = $dbh->query($sql);
             $sections= array();
+          
             while($row=mysqli_fetch_assoc($result)){
               $section = new Section();
               $section->setID($row['ID']);
@@ -99,7 +100,8 @@ class Section extends Model{
               $section->setSectionlink($row['SectionLink']);
               $section->setAllStudents($this->getSectionStudents($row['ID']));
               $section->setTeacher($this->getSectionTeacher($row['ID']));
-              $sections[] = $section;
+              $sections[$row['ID']] = $section;
+              
             }
             return $sections;
           }

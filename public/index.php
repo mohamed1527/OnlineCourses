@@ -125,7 +125,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     ?>  
 </div>
 
-       
+    <button><a href="choose.php"><h1>View Teachers Profiles</h1></a></button>
     </section>
     
     

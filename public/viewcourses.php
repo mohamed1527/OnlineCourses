@@ -120,6 +120,26 @@ $id=$_GET['id'];
 </div>
 </div>
 </form>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+             <tr>
+              <th>ID</th>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Email</th>
+              <th>Phone</th>     
+            </tr>
+            </thead>
+        <tbody>
+        
+<?php
+      echo $view->SectionsTeacher();
+?>
+<br><br>
 </body>
 </html>
 
