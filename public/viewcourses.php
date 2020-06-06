@@ -140,6 +140,13 @@ $id=$_GET['id'];
       echo $view->SectionsTeacher();
 ?>
 <br><br>
+           
+   </table>
+   </div>
+</div>
+</div>
+</div>
+</form>
 </body>
 </html>
 

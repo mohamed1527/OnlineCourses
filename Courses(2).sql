@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 27, 2020 at 04:34 PM
+-- Generation Time: Jun 06, 2020 at 02:12 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -34,16 +34,17 @@ CREATE TABLE `Course` (
   `CourseID` varchar(255) DEFAULT NULL,
   `CourseType` varchar(255) NOT NULL,
   `CourseCost` int(11) NOT NULL,
-  `CourseDescription` varchar(255) NOT NULL
+  `CourseDescription` varchar(255) NOT NULL,
+  `CourseImage` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Course`
 --
 
-INSERT INTO `Course` (`ID`, `CourseName`, `CourseID`, `CourseType`, `CourseCost`, `CourseDescription`) VALUES
-(9, 'English', '', 'Language', 210, 'It Will make Students Speaks Fluently'),
-(42, 'Arabic', NULL, 'Literture', 250, 'It Will make Students Understand Enviroment');
+INSERT INTO `Course` (`ID`, `CourseName`, `CourseID`, `CourseType`, `CourseCost`, `CourseDescription`, `CourseImage`) VALUES
+(9, 'English', '', 'Language', 300, 'It Will make Students Speaks Fluently', 'English.jpg'),
+(42, 'Arabic', NULL, 'Literture', 250, 'It Will make Students Understand Enviroment', 'Arabic.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,8 +68,8 @@ CREATE TABLE `Course_Duration` (
 --
 
 INSERT INTO `Course_Duration` (`ID`, `CourseWeeks`, `CourseHours`, `StartDate`, `End_Date`, `CourseID`, `CreatedDate`, `UpdatedDate`) VALUES
-(5, 15, 25, '2020-05-12', '2020-05-30', 9, '2020-05-12 00:00:00', '2020-05-12 15:13:41'),
-(7, 60, 29, '2020-05-13', '2020-06-06', 42, '2020-05-12 15:55:34', '2020-05-12 15:56:41');
+(5, 15, 25, '2020-05-27', '2020-06-27', 9, '2020-05-12 00:00:00', '2020-05-29 22:04:01'),
+(7, 60, 29, '2020-05-13', '2020-06-06', 42, '2020-05-12 15:55:34', '2020-05-29 22:04:16');
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,7 @@ CREATE TABLE `Section` (
 
 INSERT INTO `Section` (`ID`, `SectionName`, `SectionTime`, `SectionCost`, `SectionLink`, `CourseID`) VALUES
 (5, 'math', '11:00:00', 200, 'https', 9),
-(7, 'Arabic', '12:00:00', 250, 'https', 9),
+(7, 'Na7w', '12:00:00', 250, 'https', 9),
 (10, 'Adab', '09:30:00', 155, 'https', 42);
 
 -- --------------------------------------------------------
@@ -133,17 +134,17 @@ CREATE TABLE `Student` (
   `ID` int(11) NOT NULL,
   `Student_ID` int(11) NOT NULL,
   `Section_ID` int(11) DEFAULT NULL,
-  `Address` text NOT NULL,
-  `Attendence` int(11) NOT NULL,
-  `UpdatedDate` datetime NOT NULL
+  `Address` text DEFAULT NULL,
+  `UpdatedDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Student`
 --
 
-INSERT INTO `Student` (`ID`, `Student_ID`, `Section_ID`, `Address`, `Attendence`, `UpdatedDate`) VALUES
-(3, 48, 7, '308 Tagmo3 ELawl', 12, '2020-05-27 15:51:58');
+INSERT INTO `Student` (`ID`, `Student_ID`, `Section_ID`, `Address`, `UpdatedDate`) VALUES
+(3, 48, 7, '308 Tagmo3 ELawl', '2020-05-27 15:51:58'),
+(7, 60, 10, 'Rehab', '2020-05-29 21:27:39');
 
 -- --------------------------------------------------------
 
@@ -191,7 +192,9 @@ CREATE TABLE `User` (
 INSERT INTO `User` (`ID`, `FirstName`, `LastName`, `Email`, `Password`, `Phone`, `Image`, `CreatedDate`) VALUES
 (48, 'Mohamed', 'Ayman', 'ayman@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1003153564, 'team-2.jpg', '2020-05-27 15:39:59'),
 (49, 'Admin', 'Admin', 'admin@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1003153562, 'team-7.jpg', '2020-05-27 15:56:52'),
-(50, 'Manar', 'Medhat', 'Manar@yahoo.com', 'e10adc3949ba59abbe56e057f20f883e', 1154389672, 'manar.jpeg', '2020-05-27 15:58:05');
+(50, 'Manar', 'Medhat', 'Manar@yahoo.com', 'e10adc3949ba59abbe56e057f20f883e', 1154389672, 'manar.jpeg', '2020-05-27 15:58:05'),
+(60, 'Amr', 'Ehab', 'amrehab@yahoo.com', 'e10adc3949ba59abbe56e057f20f883e', 1023903532, 'team-8.jpg', '2020-05-29 21:12:57'),
+(62, 'Abdo', 'Mido', 'Abdo@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 103153562, 'team-6.jpg', '2020-05-29 21:22:52');
 
 -- --------------------------------------------------------
 
@@ -211,7 +214,9 @@ CREATE TABLE `User_Type` (
 INSERT INTO `User_Type` (`UserType`, `User_Id`) VALUES
 ('Student', 48),
 ('Admin', 49),
-('Teacher', 50);
+('Teacher', 50),
+('Student', 60),
+('Student', 62);
 
 --
 -- Indexes for dumped tables
@@ -287,13 +292,13 @@ ALTER TABLE `User_Type`
 -- AUTO_INCREMENT for table `Course`
 --
 ALTER TABLE `Course`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `Course_Duration`
 --
 ALTER TABLE `Course_Duration`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `Messages`
@@ -317,7 +322,7 @@ ALTER TABLE `Section`
 -- AUTO_INCREMENT for table `Student`
 --
 ALTER TABLE `Student`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `Teacher`
@@ -329,7 +334,7 @@ ALTER TABLE `Teacher`
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Constraints for dumped tables

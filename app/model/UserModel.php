@@ -137,10 +137,16 @@ if (!empty($row)){
   $result = $dbh->query($userID);
   $row1=$dbh->fetchRow($result);
 
-  if (!empty($row1)){
+  if (!empty($row)){
   
 if($row1['UserType']=='Student'){
     $_SESSION['type']='Student';
+    $sql1 = "SELECT Address FROM Student where Student_ID='".$row['ID']."'";
+    $result = $dbh->query($sql1);
+    $row2=$dbh->fetchRow($result);
+    if(!empty($row2)){
+    $_SESSION['Address']=$row2['Address'];
+    }
   }
 if($row1['UserType']=='Teacher'){
     $_SESSION['type']='Teacher';
