@@ -150,6 +150,13 @@ if($row1['UserType']=='Student'){
   }
 if($row1['UserType']=='Teacher'){
     $_SESSION['type']='Teacher';
+    $sql2="SELECT Career,Experience FROM Teacher where Teacher_ID='".$row['ID']."'";
+    $result = $dbh->query($sql2);
+    $row3=$dbh->fetchRow($result);
+    if(!empty($row3)){
+      $_SESSION['Career']=$row3['Career'];
+      $_SESSION['Experience']=$row3['Experience'];
+    }
   }
 if($row1['UserType']=='Admin'){
     $_SESSION['type']='Admin';
