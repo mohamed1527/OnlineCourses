@@ -56,8 +56,8 @@ class Bar extends View1{
 		$str.='<div class="collapse navbar-collapse" id="ftco-nav">';
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
-	    $str.='<li class="nav-item"><a href="About.php" class="nav-link">About Us</a></li>';
-        $str.='<li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>';
+	    $str.='<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>';
+        $str.='<li class="nav-item"><a href="courses.php" class="nav-link">Courses</a></li>';
 	    $str.='<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>';
 	    $str.='<li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>';
 	    $str.='<li class="nav-item"><a href="signup.php" class="nav-link">Sign Up</a></li>';
@@ -75,7 +75,7 @@ class Bar extends View1{
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
 	    $str.='<li class="nav-item"><a href="sendmessage.php" class="nav-link">Send Messages</a></li>';
-        $str.='<li class="nav-item"><a href="courses.html" class="nav-link">MyCourses</a></li>';
+        $str.='<li class="nav-item"><a href="courses.php" class="nav-link">MyCourses</a></li>';
 	    $str.='<li class="nav-item"><a href="editaccount.php" class="nav-link">MyAccount</a></li>';
 	    $str.='<li class="nav-item"><a href="invoice.php" class="nav-link">View Courses</a></li>';	          
 	    $str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';           
