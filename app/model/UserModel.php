@@ -129,7 +129,6 @@ if (!empty($row)){
   $_SESSION['password']=$row['Password'];
   $_SESSION['Phone']=$row['Phone'];
   $_SESSION['Image']=$row['Image'];
-  //$_SESSION['Address']=$row['Address'];
   
 
   echo $_SESSION['ID'];
@@ -177,14 +176,7 @@ echo "Invalid Email or Password or still not accepted";
 
 function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDate){
      
-		 //$fname = $_POST['firstname'];
-		 //$lname = $_POST['lastname'];
-		 //$email = $_POST['email'];
-     //$password = $_POST['password'];
      $password=md5($password);
-     //$phone = $_POST['phone'];
-     //move_uploaded_file($_FILES["img"]["tmp_name"],  $_FILES["img"]["name"]);
-     //$image=$_FILES['img']['name'];
      $createdDate = date("Y/m/d H:i:s");
 
      $sql = "INSERT into  User(FirstName,LastName,Email,Password,Phone,Image,CreatedDate) Values('$fname','$lname','$email','$password','$phone','$image','$createdDate');";

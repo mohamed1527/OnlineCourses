@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +8,6 @@
 </head>
 <body>
 
-<div class ="nos">
 
 <div class="card">
  
@@ -20,11 +17,19 @@ require_once("View4.php");
 class ViewTeacher extends View4{
 	
     public function Teachers(){
-        $str="";
-        $str.="<h1>".$this->model->getFirstName()."<br>".$this->model->getLastName()."</h1>";
-        $str.='<p>'.$this->model->getPhone()."</p>";
-        $str.='<p>'.$this->model-> getCareer()."</p>";
-        $str.='<p>'.$this->model-> getExperience()."</p>";
+        $id=$_GET['id'];
+        $sid=$_GET['sid'];
+        $cid=$_GET['cid'];
+        $str = ""; 
+
+        $courses = $this->model->getCourses()[$cid];
+        $section = $courses->getSections()[$sid];
+        $teacher = $section->getTeacher();  
+
+        $str.="<h1>".$teacher->getFirstName()."<br>".$teacher->getLastName()."</h1>";
+        $str.='<p>'.$teacher->getPhone()."</p>";
+        $str.='<p>'.$teacher-> getCareer()."</p>";
+        $str.='<p>'.$teacher-> getExperience()."</p>";
         $str.='<a href="#"><i class="fa fa-dribbble"></i></a>';
         $str.='<a href="#"><i class="fa fa-twitter"></i></a>';
         $str.='<a href="#"><i class="fa fa-linkedin"></i></a>';
@@ -32,10 +37,11 @@ class ViewTeacher extends View4{
         $str.='<br>';
         $str.='<input type="submit" value ="Available">';
         $str.='</div>';
-        $str.='</div>';
 
         return $str;
-    }
+    
+
+}
 }
 ?>
 

@@ -11,9 +11,10 @@ class ViewCourses extends View3{
   
                 $str .= $str . '<div class="card mb-3">';
                 $str .= '<img src="images/'.$course->getCourseImage().'" class="card-img-top" alt="Error">';
-                $str .='<div class="card-body">';
+                $str .='<div class="card-body">';$cid = $_GET['cid'];
                 $str .='<h2 class="card-title">$'.$section->getSectioncost().'</h2>';
                 $str .='<a href="#" class="btn btn-primary">Buy Now</a>';
+                $str .='<a href="invoice.php?action=printReceipt&id='.$id.'&cid='.$cid.'" class="btn btn-primart">Print Recipt</a>';
                 $str .='<p class="card-text">'.$section->getSectionTime().'</p>';
                 $str .='</div>';
                 $str .='</div>';

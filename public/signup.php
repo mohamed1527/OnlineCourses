@@ -86,7 +86,7 @@ function count1(){
 <script>
 
 function count2(){
-     var a=document.getElementById('last').value;
+     var a=document.getElementById('lastname').value;
      var submitB=document.getElementById('register').value;
      if (a.length<4){
         alert('Last name field must be more than 3 character');
@@ -192,11 +192,11 @@ function count3(){
   <h2 style="margin-left: 570px;color:#00043c ">Sign Up</h2>
   <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="First Name" name="firstname">
+    <input class="input-field" type="text" placeholder="First Name" name="firstname" id="firstname" onchange="count1();">
   </div>
   <div class="input-container">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="Last Name" name="lastname">
+    <input class="input-field" type="text" placeholder="Last Name" name="lastname" id="lastname" onchange="count2();">
   </div>
  
   <div class="input-container">
@@ -216,7 +216,7 @@ function count3(){
   </div>
   <div class="input-container">
     <i class="fa fa-phone icon"></i>
-    <input class="input-field" type="text" placeholder="Mobile number" name="phone">
+    <input class="input-field" type="text" placeholder="Mobile number" name="phone" id="phone" onchange="count3();">
   </div>
   <div class="input-container">
     <i class="fa fa-home icon"></i>

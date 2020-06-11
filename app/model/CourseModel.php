@@ -245,8 +245,7 @@ function addteacher(){
        
         $usertype = $dbh->query($sql2);
         $row1 = $dbh->fetchRow($usertype);
-         
-        //$id = $row['ID'];     
+              
        $sql3 = "INSERT INTO  Teacher(User_Id,Career,Experience) Values(($id),'$career','$experience');";
        if($dbh->query($sql2) == true){
         if($dbh->query($sql3) == true){

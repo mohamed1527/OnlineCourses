@@ -62,7 +62,55 @@
       echo $view1->NormalBar();
 
     }
-    ?>  
+    ?> 
+    <div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon"></span>
+					<input type="text" name="search_text" id="search_text" placeholder="Search by User Details" class="form-control" />
+				</div>
+			</div>
+			<br />
+			<div id="result"></div>
+		</div>
+		<div style="clear:both"></div>
+		<br />
+		
+		<br />
+		<br />
+		<br />
+	</body>
+</html>
+
+
+<script>
+$(document).ready(function(){
+	load_data();
+	function load_data(query)
+	{
+		$.ajax({
+			url:"backend-search-users.php",
+			method:"post",
+			data:{query:query},
+			success:function(data)
+			{
+				$('#result').html(data);
+			}
+		});
+	}
+	
+	$('#search_text').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+			load_data(search);
+		}
+		else
+		{
+			load_data();			
+		}
+	});
+});
+</script> 
 <form  method = "post" action="showusers.php?action=AddUser">
 <div class="container">
   <div class="row">

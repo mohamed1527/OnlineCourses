@@ -127,9 +127,9 @@ public function SectionsStudents(){
 public function SectionsTeacher(){
     $id=$_GET['id'];
     $str = ""; 
-    $courses = $this->model->getCourses();
+    $courses = $this->model->getCourses()[$id];
     
-    foreach($courses[$id]->getSections() as $section){
+    foreach($courses->getSections() as $section){
         $teacher = $section->getTeacher();
         $str= $str . '<tr>'.
         $str .= '<td>'.$teacher->getID().'</td>';
@@ -139,9 +139,6 @@ public function SectionsTeacher(){
         $str .= '<td>'.$teacher->getPhone().'</td>';
     }
     $str.='</tr>';
-    
-
-
     return $str;
 }
 //$section->getTeacher()->getCareer()
