@@ -23,10 +23,10 @@ if (version_compare(phpversion(), '5.4.0', '<')) {
 				<div class="col d-flex justify-content-end">
 					<div class="social-media">
 		    		<p class="mb-0 d-flex">
-		    			<a href="www.facebook.com" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-		    			<a href="www.twitter.com" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-		    			<a href="www.instagram.com" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-		    			<a href="www.dribbble.com" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+		    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
 		    		</p>
 	        </div>
 				</div>
@@ -57,12 +57,13 @@ class Bar extends View1{
 		$str.='<div class="collapse navbar-collapse" id="ftco-nav">';
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
-	    $str.='<li class="nav-item"><a href="About.php" class="nav-link">About Us</a></li>';
+		$str.='<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>';
+		$str.='<li class="nav-item"><a href="FAQ.php" class="nav-link">FAQ</a></li>';   
         $str.='<li class="nav-item"><a href="courses.php" class="nav-link">Courses</a></li>';
 	    $str.='<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>';
 	    $str.='<li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>';
 	    $str.='<li class="nav-item"><a href="signup.php" class="nav-link">Sign Up</a></li>';
-	    $str.='<li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>';         
+		$str.='<li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>';        
         $str.='</ul>';
 	    $str.='</div></div>
 		</nav>';
@@ -78,9 +79,8 @@ class Bar extends View1{
 	    $str.='<li class="nav-item"><a href="sendmessage.php" class="nav-link">Send Messages</a></li>';
         $str.='<li class="nav-item"><a href="courses.php" class="nav-link">MyCourses</a></li>';
 	    $str.='<li class="nav-item"><a href="editaccount.php" class="nav-link">MyAccount</a></li>';
-		$str.='<li class="nav-item"><a href="invoice.php" class="nav-link">View Courses</a></li>';
-		$str.='<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>';	          
-		$str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';       
+	    $str.='<li class="nav-item"><a href="invoice.php" class="nav-link">View Courses</a></li>';	          
+	    $str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';           
         $str.='</ul>';
 	    $str.='</div></div>
 		</nav>';
@@ -92,7 +92,7 @@ class Bar extends View1{
 		$str.='<div class="collapse navbar-collapse" id="ftco-nav">';
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
-	    $str.='<li class="nav-item"><a href="About.php" class="nav-link">About Us</a></li>';
+	    $str.='<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>';
         $str.='<li class="nav-item"><a href="editTeacherAccount.php" class="nav-link">MyAccount</a></li>';
 		$str.='<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>';
 		$str.='<li class="nav-item"><a href="blog.php" class="nav-link">View Courses</a></li>';
@@ -114,7 +114,7 @@ class Bar extends View1{
         $str.='<li class="nav-item"><a href="showcourses.php" class="nav-link">Show Courses</a></li>';
 	    $str.='<li class="nav-item"><a href="showmessages.php" class="nav-link">View Messages</a></li>';
 		$str.='<li class="nav-item"><a href="showusers.php" class="nav-link">Show Users</a></li>';
-		$str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';          
+	    $str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';           
 		$str.='</ul>';
 		$str.='</div></div>
 		</nav>';
