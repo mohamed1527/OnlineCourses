@@ -1,16 +1,15 @@
 <?php
+ session_start();
  define('__ROOT__', "../app/");
- require_once(__ROOT__ . "model/UserModel.php");
- require_once(__ROOT__ . "model/CourseModel.php");
- require_once(__ROOT__ . "controller/UserController.php");
- require_once(__ROOT__ . "controller/CourseController.php");
+ require_once(__ROOT__ . "model/MessageModel.php");
+ require_once(__ROOT__ . "controller/MessageController.php");
+ //require_once(__ROOT__ . "view/bar.php");
 
+ $model = new Message();
+ $controller = new MessageController($model);
+ //$view = new ViewTable($controller, $model);
  
 
-  $model = new User();
-  //$model = new Course();
-  $controller = new UserController($model);
-  //$controller = new CourseController($model);
   
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
@@ -247,22 +246,18 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 						</div>
 					</div>
 					<div class="col-md-3 py-md-5 py-4 aside-stretch-right pl-lg-5">
-						<h2 class="footer-heading">Request A Quote</h2>
-						<form action="#" class="contact-form">
+						<h2 class="footer-heading">Contact Us</h2>
+						<form action="blog.php?action=BlogMessage" class="contact-form" method="POST">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+                <input type="text" id="email" name="email" class="form-control" placeholder="Your Email">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
+                <textarea name="Message" id="Message" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
+                <input name="receiver" value="<?php echo $receiver;?>"  hidden />
+								<input name="id" value="<?php echo $id;?>"  hidden />
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-              </div>
-              <div class="form-group">
-                <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-              	<button type="submit" class="form-control submit px-3">Send</button>
+              	<button type="submit" class="form-control submit px-3">Send Message</button>
               </div>
             </form>
 					</div>

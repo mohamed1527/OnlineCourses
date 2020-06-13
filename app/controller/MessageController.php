@@ -22,4 +22,12 @@ class MessageController extends Controller{
 
         $this->model->contactus($sender,$receiver,$message);
     }
+    public function BlogMessage(){
+        $sender = $_REQUEST['email'];
+        $receiver = $_REQUEST['receiver'];
+        $message = $_REQUEST['Message'];
+
+
+        $this->model->blog($sender,$receiver,$message);
+    }
 }

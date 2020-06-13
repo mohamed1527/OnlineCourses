@@ -48,9 +48,6 @@ $id=$_GET['id'];
     
 
     <body>
- 
-
-
 
     <?php
       echo $view->Teachers();
