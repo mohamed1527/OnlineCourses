@@ -49,6 +49,7 @@ if (version_compare(phpversion(), '5.4.0', '<')) {
 <?php 
 
 
+
 class Bar extends View1{
 	
 	public function NormalBar(){

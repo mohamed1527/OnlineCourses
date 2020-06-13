@@ -55,10 +55,11 @@ class ViewTable extends View{
 
         foreach($this->model->getMessages() as $message){
             $str = $str .'<tr>'.
+            '<td>' . $message->getID() . " </td> ".
             '<td>' . $message->getSender() . " </td> ".
             '<td> ' . $message->getReceiver() . "</td>".
             '<td> ' . $message->getMessage() . " </td> ".
-            '<td><a href="deletemessage.php?id='.$message->getID().'">Delete Message </a></td> '.
+            '<td><a href="deletemessages.php?id='.$message->getID().'">Delete Message </a></td> '.
             '</tr>';
         }
         return $str;
@@ -66,6 +67,7 @@ class ViewTable extends View{
 
     public function Section(){
         $str = "";
+        $courses = $this->model->getCourses();
 
         foreach($this->model->getSections() as $section){
             $str= $str . '<tr>'.
@@ -74,6 +76,7 @@ class ViewTable extends View{
             '<td> ' . $section->getSectiontime() . " </td> ".
             '<td>' . $section->getSectioncost() . " </td> ".
             '<td> ' . $section->getSectionlink() . " </td> ".
+            '<td><select><option>'.$courses->getCourseName()."</option></select></td>". 
             '<td><a href="editsections.php?id='.$section->getID().'">Edit Section </a></td> '.
             '<td><a href="deletesections.php?id='.$section->getID().'">Delete Section</a></td> '.
             '</tr>';
