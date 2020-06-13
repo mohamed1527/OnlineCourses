@@ -46,7 +46,7 @@ class Message extends Model{
               $message = new Message();
               $message->setID($row['ID']);
               $message->setSender($row['Sender']);
-              $message->setReceiver($row['Recevier']);
+              $message->setReceiver($row['Receiver']);
               $message->setMessage($row['Message']);
              
               $messages[] = $message;
@@ -54,24 +54,25 @@ class Message extends Model{
             return $messages;
           }
 
-          static function send($sender,$receiver,$message){
-            if($_SESSION['UserType']=='Student'||$_SESSION['UserType']=='Teacher'){
-                $sender = $_SESSION['Email'];
+          static function send($receiver,$message){
+                $sender = $_SESSION['email'];
                 $receiver = 'Admin';
                 $message = $_POST['Message'];
-                $sql="Insert Into Messages (sender,receiver,message) values('$sender', '$receiver','$message');";
-                echo $sender;
-                echo $receiver;
-                echo $sql;
-                echo $message;
+                $sql="Insert Into Messages (Sender,Receiver,Message) values('$sender', '$receiver','$message');";
                 $dbh = new dbh();
                 $result = $dbh->query($sql);
+                //echo $sender;
+                //echo $receiver;
+                //echo $sql;
+                //echo $message;
+                
                 if($dbh->query($sql) === true){
                     echo "Send Successfully.";
                 } else{
                     echo "ERROR: Could not able to execute $sql. " . $conn->error;
                 }
           }
+        /*
             else if($_SESSION['UserType']='Admin'){
                 $sender = $_SESSION['Email'];
                 $receiver = $_POST['Receiver'];
@@ -85,12 +86,14 @@ class Message extends Model{
                     echo "ERROR: Could not able to execute $sql. " . $conn->error;
                 }
             }
-        }
+        */
           static function delete($id){
-              
-              $sql = "Delete * From Messages";
+              $id = $_POST['id'];
+              $sql = "DELETE From Messages where ID ='$id';";
+              echo $sql;
               $dbh = new dbh();
               $result = $dbh->query($sql);
+              echo $result;
               if($dbh->query($sql) === true){
                 echo "Delete Successfully.";
             } else{
