@@ -14,49 +14,6 @@ if (version_compare(phpversion(), '5.4.0', '<')) {
  ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<style>
-.not-order.lg-last{
-width: 30px;
-height: 30px;
-}
-
-.not {
-
-	width: 30px;
-	height: 30px;
-	margin-right: 5px;
-	margin-top: 0px;
-color: white;	
-}
-
-		.notification {
-  background-color: #555;
-  color: white;
-
-  text-decoration: none;
-  padding: 15px 26px;
-  position: relative;
-  display: inline-block;
-  border-radius: 2px;
-  margin-left: 0px;
-}
-
-.notification:hover {
-  background: red;
-}
-
-.badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  padding: 5px 10px;
-  border-radius: 50%;
-  background: red;
-  color: white;
-}
-	</style>
-</head>
 <body>
 <div class="container pt-5">
 			<div class="row justify-content-between">
@@ -81,15 +38,16 @@ color: white;
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
-		<form action="#" class=" searchform order-lg-last   ">
+				<form action="#" class="searchform order-lg-last">
           <div class="form-group d-flex">
             <input type="text" class="form-control pl-3" placeholder="Search">
             <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
           </div>
     
         </form>
-    
+					  
 <?php 
+
 
 
 class Bar extends View1{
@@ -99,19 +57,15 @@ class Bar extends View1{
 		$str.='<div class="collapse navbar-collapse" id="ftco-nav">';
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
-	    $str.='<li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>';
+		$str.='<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>';
+		$str.='<li class="nav-item"><a href="FAQ.php" class="nav-link">FAQ</a></li>';   
         $str.='<li class="nav-item"><a href="courses.php" class="nav-link">Courses</a></li>';
-	    $str.='<li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>';
-	    $str.='<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>';
+	    $str.='<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>';
+	    $str.='<li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>';
 	    $str.='<li class="nav-item"><a href="signup.php" class="nav-link">Sign Up</a></li>';
-	    $str.='<li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>'; 
-	   
-	    
-
+		$str.='<li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>';        
         $str.='</ul>';
-	    $str.='</div>
-	    </div>
-
+	    $str.='</div></div>
 		</nav>';
 	    
 		return $str;
@@ -123,20 +77,14 @@ class Bar extends View1{
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
 	    $str.='<li class="nav-item"><a href="sendmessage.php" class="nav-link">Send Messages</a></li>';
-        $str.='<li class="nav-item"><a href="courses.html" class="nav-link">MyCourses</a></li>';
+        $str.='<li class="nav-item"><a href="courses.php" class="nav-link">MyCourses</a></li>';
 	    $str.='<li class="nav-item"><a href="editaccount.php" class="nav-link">MyAccount</a></li>';
-	    $str.='<li class="nav-item"><a href="invoice.php" class="nav-link">View Courses</a></li>';
-	    $str.='<li class="nav-item">		  			<a href="notifications.php" class="nav-link">
-  Inbox
-  <span class="badge">3</span>
-  
-</a></li>';	          
-	    $str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';
-	     $str.='<li class="nav-item"><a href="index.php" class="nav-link">Logout</a></li>';           
+	    $str.='<li class="nav-item"><a href="invoice.php" class="nav-link">View Courses</a></li>';	          
+	    $str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';           
         $str.='</ul>';
 	    $str.='</div></div>
 		</nav>';
-	   
+	    
 		return $str;
 }
 	public function TeacherBar(){
@@ -144,10 +92,10 @@ class Bar extends View1{
 		$str.='<div class="collapse navbar-collapse" id="ftco-nav">';
 	    $str.='<ul class="navbar-nav mr-auto">';
 	    $str.='<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>';
-	    $str.='<li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>';
+	    $str.='<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>';
         $str.='<li class="nav-item"><a href="editTeacherAccount.php" class="nav-link">MyAccount</a></li>';
-		$str.='<li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>';
-		$str.='<li class="nav-item"><a href="blog.html" class="nav-link">View Courses</a></li>';
+		$str.='<li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>';
+		$str.='<li class="nav-item"><a href="blog.php" class="nav-link">View Courses</a></li>';
 	    $str.='<li class="nav-item"><a href="signup.php" class="nav-link">Included Courses</a></li>';
 		$str.='<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';           
         $str.='</ul>';
