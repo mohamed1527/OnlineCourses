@@ -1,6 +1,6 @@
 <?php
  
-  session_start();
+  //session_start();
   require_once(__ROOT__ . "model/Model.php");
 class User extends Model{
   private $id;
@@ -10,15 +10,26 @@ class User extends Model{
   private $email;
   private $password; 
   private $image;
+  private $address;
   private $usertype; 
   private $dbh;
   public $users;
 
-  function __construct($email="",$password="",$fname="",$lname="") {
+  function __construct($email="",$password="",$fname="",$lname="",$address="",$image="") {
     $this->email = $email;
     $this->password = $password;
     $this->fname = $fname;
     $this->lname = $lname; 
+    $this->image = $image; 
+    $this->address = $address;
+  }
+  function setAddress($address){
+    return $this->address = $address;
+    
+  }
+  function getAddress(){
+    
+    return $this->address = $address;
   }
   function setFirstName($fname){
     return $this->fname = $fname;
@@ -100,28 +111,51 @@ class User extends Model{
 static function login($email,$password){
   
 	$email=$_POST['email'];
-	$password=$_POST['password'];
+	$password=md5($password);
 
-$sql = "SELECT email, password , ID FROM User where email='$email' AND password='$password'";
-//echo $sql;
+$sql = "SELECT * FROM User where Email='$email' AND Password='$password'";
+
 $dbh = new Dbh();
 $result = $dbh->query($sql);
 $row=$dbh->fetchRow();
-
+//echo $row;
 
 if (!empty($row)){
+  session_start();
+  $_SESSION['ID']=$row['ID'];
+  $_SESSION['FirstName']=$row['FirstName'];
+  $_SESSION['LastName']=$row['LastName'];
+  $_SESSION['email']=$row['Email'];
+  $_SESSION['password']=$row['Password'];
+  $_SESSION['Phone']=$row['Phone'];
+  $_SESSION['Image']=$row['Image'];
   
+
+  echo $_SESSION['ID'];
   $userID = "SELECT UserType FROM User_Type where User_Id='".$row['ID']."'";
   $result = $dbh->query($userID);
   $row1=$dbh->fetchRow($result);
 
-  if (!empty($row1)){
+  if (!empty($row)){
   
 if($row1['UserType']=='Student'){
     $_SESSION['type']='Student';
+    $sql1 = "SELECT Address FROM Student where Student_ID='".$row['ID']."'";
+    $result = $dbh->query($sql1);
+    $row2=$dbh->fetchRow($result);
+    if(!empty($row2)){
+    $_SESSION['Address']=$row2['Address'];
+    }
   }
 if($row1['UserType']=='Teacher'){
     $_SESSION['type']='Teacher';
+    $sql2="SELECT Career,Experience FROM Teacher where Teacher_ID='".$row['ID']."'";
+    $result = $dbh->query($sql2);
+    $row3=$dbh->fetchRow($result);
+    if(!empty($row3)){
+      $_SESSION['Career']=$row3['Career'];
+      $_SESSION['Experience']=$row3['Experience'];
+    }
   }
 if($row1['UserType']=='Admin'){
     $_SESSION['type']='Admin';
@@ -129,27 +163,23 @@ if($row1['UserType']=='Admin'){
 
 echo" Login Successfully";
 
+  
 }
 
 else{
 echo "Invalid Email or Password or still not accepted";
 }	
 
-}
+
+  }
 }
 
-function signup($fname,$lname,$email,$password,$phone){
+function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDate){
      
-		 $fname = $_POST['firstname'];
-		 $lname = $_POST['lastname'];
-		 $email = $_POST['email'];
-		 $password = $_POST['password'];
-     $hashPass=sha1($_POST['password']);
-     $phone = $_POST['phone'];
-     //move_uploaded_file($_FILES["img"]["tmp_name"],  $_FILES["img"]["name"]);
-     //$image=$_FILES['img']['name'];
-     
-     $sql = "INSERT into  User(FirstName,LastName,Email,Password,Phone) Values('$fname','$lname','$email','$hashPass','$phone');";
+     $password=md5($password);
+     $createdDate = date("Y/m/d H:i:s");
+
+     $sql = "INSERT into  User(FirstName,LastName,Email,Password,Phone,Image,CreatedDate) Values('$fname','$lname','$email','$password','$phone','$image','$createdDate');";
      $sql1 = "SELECT ID FROM User WHERE FirstName='$fname' AND LastName='$lname' AND Email='$email'";
      $dbh = new Dbh();
      
@@ -161,31 +191,33 @@ function signup($fname,$lname,$email,$password,$phone){
        $id = $row['ID'];     
        $sql2 = "INSERT INTO  User_Type(UserType,User_Id) Values('Student',($id));";
        if($dbh->query($sql2) == true){
-         
+
+        $sql3="INSERT INTO Student(Student_ID,Address) values (($id),'$address');";
+
+       if($dbh->query($sql3)==true){ 
        echo" Signup successfully";
       
          }
        }
      
     else{
+      echo "<script>alert('Email Already Taken');</script>";
        echo "ERROR: Could not able to execute $sql. " . $conn->error;
    }
-           
+  }
        }
-       function adduser($fname,$lname, $email,$password,$phone,$usertype){
+       function adduser($fname,$lname,$email,$password,$phone,$image,$usertype,$createdDate){
         // Attempt insert query execution
         $fname = $_POST['FirstName'];
         $lname = $_POST['LastName'];
         $email = $_POST['Email'];
-        $password = $_POST['Password'];
-        $hashPass=sha1($_POST['Password']);
+        $password=md5($password);
         $phone = $_POST['Phone'];
-       // move_uploaded_file($_FILES["Image"]["tmp_name"],  $_FILES["Image"]["name"]);
-        //$image=$_FILES['Image']['name'];
+        $image = $_POST['Image'];
         $usertype = $_POST['UserType'];
-
+        $createdDate = date("Y/m/d H:i:s");
         
-        $sql = "INSERT INTO User (FirstName,LastName,Email,Password,Phone) VALUES ('$fname','$lname','$email','$hashPass','$phone')";
+        $sql = "INSERT INTO User (FirstName,LastName,Email,Password,Phone,Image,CreatedDate) VALUES ('$fname','$lname','$email','$password','$phone','$image','$createdDate')";
         $sql1 = "SELECT ID FROM User WHERE Email='$email'";
 
         $dbh = new dbh();
@@ -206,29 +238,30 @@ function signup($fname,$lname,$email,$password,$phone){
       
   }
 }
-  function edituser($id,$fname,$lname, $email,$password,$phone,$usertype){
+  function edituser($id,$fname,$lname,$email,$phone,$image,$usertype,$updateddate){
     // Attempt insert query execution
     
     $fname = $_POST['FirstName'];
     $lname = $_POST['LastName'];
     $email = $_POST['Email'];
-    $password = $_POST['Password'];
     $phone = $_POST['Phone'];
-    //move_uploaded_file($_FILES["Image"]["tmp_name"],  $_FILES["Image"]["name"]);
+    $image = $_POST['Image'];
     //$image=$_FILES['Image']['name'];
+    $updateddate = date("Y/m/d H:i:s");
     $sql = "UPDATE User
-    SET FirstName = '$fname' , LastName = '$lname' , Email='$email' , Password ='$password' , Phone = $phone 
+    SET FirstName = '$fname' , LastName = '$lname' , Email='$email' , Phone = $phone, Image='$image'
     WHERE ID=$id";
 
     $sql1 = "SELECT ID FROM User WHERE Email='$email'";
-
+    //echo $sql;
+    //echo $sql1;
     $dbh = new dbh();
     if($dbh->query($sql) == true){
 
       $userID = $dbh->query($sql1);
       $row = $dbh->fetchRow($userID);
       $uid = $row['ID'];
-     // echo $uid;
+      echo $uid;
   
       $sql2 = "UPDATE User_Type
     SET   UserType='$usertype'
@@ -244,7 +277,7 @@ function signup($fname,$lname,$email,$password,$phone){
   }
 
 }
-  
+}
   
       function deleteuser($id){
         $id = $_POST['id'];
@@ -252,16 +285,20 @@ function signup($fname,$lname,$email,$password,$phone){
         $sql="DELETE from User_Type where User_ID='$id';";
         $dbh = new dbh();
         if($dbh->query($sql) == true){
-          $sql1 ="DELETE from User where ID='$id';"; 
+          $sql1="DELETE From Student where Student_ID='$id';";  
           
-        
-        $result = $dbh->query($sql1);
-        if($dbh->query($sql1) === true){
+        if($dbh->query($sql1) == true){
+
+          $sql2 ="DELETE from User where ID='$id';"; 
+
+        $result = $dbh->query($sql2);
+        if($dbh->query($sql2) === true){
                 echo "Deleted Successfully.";
             } else{
                 echo "ERROR: Could not able to execute $sql. " . $conn->error;
             }
       }
+    }
     }
     
   
@@ -280,5 +317,5 @@ function signup($fname,$lname,$email,$password,$phone){
         }
     }
 }
-}
+
 
