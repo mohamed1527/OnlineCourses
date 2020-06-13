@@ -45,32 +45,21 @@ $id=$_GET['id'];
     <link rel="stylesheet" href="../lib/css/icomoon.css">
     <link rel="stylesheet" href="../lib/css/style.css">
     </head>
+    
 
-<?php
-    require_once(__ROOT__ . "view/bar.php");
-    $view1 = new Bar($controller, $model);
-    if (isset($_SESSION['type']) && !empty($_SESSION['type'])) {
-      switch($_SESSION['type']){
-        case 'Admin': 
-          echo $view1->AdminBar();
-          break;
-        case 'Teacher':
-          echo $view1->TeacherBar();
-          break;
-        case 'Student':
-          echo $view1->StudentBar();
-          break;       
-      }
-    }
-    else {
-      echo $view1->NormalBar();
+    <body>
+ 
 
-    }
-    ?>  
-<?php
+
+
+    <?php
       echo $view->Teachers();
 ?>
 
-</form>
-</body>
+
+    </body>
+
+
+
+
 </html>
