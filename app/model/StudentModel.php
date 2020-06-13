@@ -32,11 +32,9 @@ class Student extends User{
         $id = $_POST['id'];
         $fname = $_POST['FirstName'];
         $lname = $_POST['LastName'];
-       // $password = $_POST['Password'];
         $image = $_POST['Image'];
         $phone = $_POST['Phone'];
         $address = $_POST['Address'];
-        //$attendence = $_POST['attendence'];
         $updateddate = date("Y/m/d H:i:s");
         
 
@@ -52,8 +50,6 @@ class Student extends User{
           $userID = $dbh->query($sql1);
           $row = $dbh->fetchRow($userID);
           $uid = $row['ID'];
-         // echo $uid;
-        // echo "<script>alert('Updated successfully')</script>";
           $sql2 = "UPDATE Student
         SET Address = '$address' , UpdatedDate = '$updateddate'
         WHERE Student_ID=$uid";
@@ -68,7 +64,7 @@ class Student extends User{
             $_SESSION['Image']=$image;
             $_SESSION['Phone']=$phone;
             $_SESSION['Address']=$address;
-          echo "<script>alert('Updated successfully')</script>";
+            echo "<div class='alert alert-success' role='alert'> Updated Successfully </div>";
          
       } else{
           echo "<script>alert('Not Updated')</script>";

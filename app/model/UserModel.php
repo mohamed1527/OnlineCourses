@@ -118,7 +118,6 @@ $sql = "SELECT * FROM User where Email='$email' AND Password='$password'";
 $dbh = new Dbh();
 $result = $dbh->query($sql);
 $row=$dbh->fetchRow();
-//echo $row;
 
 if (!empty($row)){
   session_start();
@@ -131,7 +130,6 @@ if (!empty($row)){
   $_SESSION['Image']=$row['Image'];
   
 
-  echo $_SESSION['ID'];
   $userID = "SELECT UserType FROM User_Type where User_Id='".$row['ID']."'";
   $result = $dbh->query($userID);
   $row1=$dbh->fetchRow($result);
@@ -161,13 +159,13 @@ if($row1['UserType']=='Admin'){
     $_SESSION['type']='Admin';
   }
 
-echo" Login Successfully";
+  echo "<div class='alert alert-success' role='alert'> Login Successfully </div>";
 
   
 }
 
 else{
-echo "Invalid Email or Password or still not accepted";
+  echo "<div class='alert alert-danger' role='alert'> Invalid Email or Password </div>";
 }	
 
 
@@ -195,13 +193,13 @@ function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDa
         $sql3="INSERT INTO Student(Student_ID,Address) values (($id),'$address');";
 
        if($dbh->query($sql3)==true){ 
-       echo" Signup successfully";
+        echo "<div class='alert alert-success' role='alert'> Signup Successfully </div>";
       
          }
        }
      
     else{
-      echo "<script>alert('Email Already Taken');</script>";
+      echo "<div class='alert alert-danger' role='alert'> Email Has Already Taken </div>";
        echo "ERROR: Could not able to execute $sql. " . $conn->error;
    }
   }
@@ -226,15 +224,13 @@ function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDa
         $userID = $dbh->query($sql1);
         $row = $dbh->fetchRow($userID);
         $uid = $row['ID'];
-       // echo $uid;
   
         $sql2 = "INSERT INTO User_Type (UserType,User_Id) Values('$usertype',($uid));";
         if($dbh->query($sql2) == true){
-            echo "Records inserted successfully.";
+          echo "<div class='alert alert-success' role='alert'> Added Successfully </div>";
         } else{
             echo "ERROR: Could not able to execute $sql. " . $conn->error;
         }
-        //array_push($this->fruits, new Fruit("0","test","1.0"));
       
   }
 }
@@ -246,15 +242,12 @@ function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDa
     $email = $_POST['Email'];
     $phone = $_POST['Phone'];
     $image = $_POST['Image'];
-    //$image=$_FILES['Image']['name'];
     $updateddate = date("Y/m/d H:i:s");
     $sql = "UPDATE User
     SET FirstName = '$fname' , LastName = '$lname' , Email='$email' , Phone = $phone, Image='$image'
     WHERE ID=$id";
 
     $sql1 = "SELECT ID FROM User WHERE Email='$email'";
-    //echo $sql;
-    //echo $sql1;
     $dbh = new dbh();
     if($dbh->query($sql) == true){
 
@@ -266,12 +259,10 @@ function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDa
       $sql2 = "UPDATE User_Type
     SET   UserType='$usertype'
     WHERE User_ID=$uid";
-    //echo $sql2;
     $result = $dbh->query($sql2);
   
     if($dbh->query($sql2) === true){
-      echo "Updated successfully.";
-      //$this->fillArray();
+      echo "<div class='alert alert-success' role='alert'> Updated Successfully </div>";
   } else{
       echo "ERROR: Could not able to execute $sql. " . $conn->error;
   }
@@ -293,7 +284,7 @@ function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDa
 
         $result = $dbh->query($sql2);
         if($dbh->query($sql2) === true){
-                echo "Deleted Successfully.";
+          echo "<div class='alert alert-success' role='alert'> Deleted Successfully </div>";
             } else{
                 echo "ERROR: Could not able to execute $sql. " . $conn->error;
             }

@@ -15,4 +15,11 @@ class MessageController extends Controller{
 
         $this->model->delete($id);
     }
+    public function ContactUSMessage(){
+        $sender = $_REQUEST['email'];
+        $receiver = $_REQUEST['receiver'];
+        $message = $_REQUEST['Message'];
+
+        $this->model->contactus($sender,$receiver,$message);
+    }
 }

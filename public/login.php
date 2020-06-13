@@ -111,14 +111,14 @@
   <h2 style="margin-left: 570px;color:#00043c ">Login</h2>
   <div class="input-container">
     <i class="fa fa-envelope icon"></i>
-    <input class="input-field" type="email" placeholder="Email" name="email">
+    <input class="input-field" type="email" placeholder="Email" name="email" required>
   </div>
   <div class="input-container">
     <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Password" name="password">
+    <input class="input-field" type="password" placeholder="Password" name="password" required>
   </div>
  <a style="margin-left:300px;" href="#">Forget Password?</a>
- <a style="margin-left: 335px;" href="signup.php">Don't Have Account?</a>
+ <a style="margin-left: 420px;" href="signup.php">Don't Have Account?</a>
  <br>
  
   <button type="submit" name="login" class="btn">Login</button>

@@ -163,8 +163,8 @@ static function addsection($sectionname,$sectiontime,$sectioncost,$sectionlink){
 
   $result = $dbh->query($sql);
 
- if($dbh->query($sql) == true){
-      echo" Added Section successfully";
+ if($result == true){
+    echo "<div class='alert alert-success' role='alert'> Add Section Successfully </div>";
 } else{
     echo "ERROR: Could not able to execute $sql. " . $conn->error;
   }
@@ -184,7 +184,7 @@ static function addsection($sectionname,$sectiontime,$sectioncost,$sectionlink){
     $result = $dbh->query($sql);
 
     if($dbh->query($sql) == true){
-        echo "Section Edited successfully.";
+      echo "<div class='alert alert-success' role='alert'> Edit Section Successfully </div>";
         
     } else{
         echo "ERROR: Could not able to execute $sql. " . $conn->error;
@@ -198,7 +198,7 @@ static function addsection($sectionname,$sectiontime,$sectioncost,$sectionlink){
         $result = $dbh->query($sql);
       
        if($dbh->query($sql) == true){
-                echo "Section Deleted successfully.";
+                echo "<div class='alert alert-success' role='alert'> Delete Section Successfully </div>";
                 
             } else{
                 echo "ERROR: Could not able to execute $sql. " . $conn->error;

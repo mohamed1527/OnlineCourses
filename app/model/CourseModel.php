@@ -164,7 +164,7 @@ static function addcourses($coursename,$courseweeks,$coursehours,$coursetype,$co
   echo $sql2;
   if($dbh->query($sql2) === true){
     
-    echo" Added Courses successfully";
+    echo "<div class='alert alert-success' role='alert'> Added Course Successfully </div>";
     
 } else{
     echo "ERROR: Could not able to execute $sql. " . $conn->error;
@@ -191,17 +191,16 @@ function editcourse($id,$coursename,$coursetype,$coursecost,$coursedescription,$
   SET CourseName = '$coursename' , CourseType ='$coursetype' , CourseCost = $coursecost ,  CourseDescription='$coursedescription' , CourseImage='$courseimage'
   WHERE ID='$id'";
 
-  //echo $sql;
+  
   $dbh = new dbh();
   if($dbh->query($sql) == true){
 
     $sql2 = "UPDATE Course_Duration
   SET   CourseWeeks='$courseweeks' , CourseHours='$coursehours' , StartDate='$startdate' , End_Date='$enddate' , UpdatedDate='$updateddate'
   WHERE CourseID='$id'";
-  //echo $sql2;
   $result = $dbh->query($sql2);
   if($dbh->query($sql2) === true){
-    echo "updated successfully.";
+    echo "<div class='alert alert-success' role='alert'> Updated Successfully </div>";
     
 } else{
     echo "ERROR: Could not able to execute $sql. " . $conn->error;
@@ -220,7 +219,7 @@ function deletecourse($courseid){
 
   $result = $dbh->query($sql1);
   if($dbh->query($sql1) === true){
-          echo "Course Deleted successfully.";
+    echo "<div class='alert alert-success' role='alert'> Course Deleted Successfully </div>";
          
       } else{
           echo "ERROR: Could not able to execute $sql. " . $conn->error;
@@ -250,7 +249,7 @@ function addteacher(){
        if($dbh->query($sql2) == true){
         if($dbh->query($sql3) == true){
           $this->setTeachers($teacher->getId(), $teacher);
-        echo" Teacher Added Successfully";
+          echo "<div class='alert alert-success' role='alert'> Teacher Added Successfully </div>";
       
       }
     }

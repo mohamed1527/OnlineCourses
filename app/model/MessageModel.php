@@ -58,43 +58,37 @@ class Message extends Model{
                 $sender = $_SESSION['email'];
                 $receiver = 'Admin';
                 $message = $_POST['Message'];
-                $sql="Insert Into Messages (Sender,Receiver,Message) values('$sender', '$receiver','$message');";
+                $sql="Insert Into Messages (Sender,Receiver,Message,Status) values('$sender', '$receiver','$message',0);";
                 $dbh = new dbh();
                 $result = $dbh->query($sql);
-                //echo $sender;
-                //echo $receiver;
-                //echo $sql;
-                //echo $message;
                 
-                if($dbh->query($sql) === true){
-                    echo "Send Successfully.";
+                if($result === true){
+                    echo "<div class='alert alert-success' role='alert'> Send Successfully </div>";
                 } else{
                     echo "ERROR: Could not able to execute $sql. " . $conn->error;
                 }
           }
-        /*
-            else if($_SESSION['UserType']='Admin'){
-                $sender = $_SESSION['Email'];
-                $receiver = $_POST['Receiver'];
-                $message = $_POST['Message'];
-                $sql="Insert Into Messages (sender,receiver,message) values('$sender', '$receiver','$message');";
-                $dbh = new dbh();
-                $result = $dbh->query($sql);
-                if($dbh->query($sql) === true){
-                    echo "Send Successfully.";
-                } else{
-                    echo "ERROR: Could not able to execute $sql. " . $conn->error;
-                }
+          static function contactus($sender,$receiver,$message){
+            $sender = $_POST['email'];
+            $receiver = 'Admin';
+            $message = $_POST['Message'];
+            $sql="Insert Into Messages (Sender,Receiver,Message,Status) values('$sender', '$receiver','$message',0);";
+            $dbh = new dbh();
+            $result = $dbh->query($sql);
+        
+            
+            if($result === true){
+              echo "<div class='alert alert-success' role='alert'> Send Successfully </div>";
+            } else{
+                echo "ERROR: Could not able to execute $sql. " . $conn->error;
             }
-        */
+      }
           static function delete($id){
               $id = $_POST['id'];
               $sql = "DELETE From Messages where ID ='$id';";
-              echo $sql;
               $dbh = new dbh();
               $result = $dbh->query($sql);
-              echo $result;
-              if($dbh->query($sql) === true){
+              if($result === true){
                 echo "Delete Successfully.";
             } else{
                 echo "ERROR: Could not able to execute $sql. " . $conn->error;

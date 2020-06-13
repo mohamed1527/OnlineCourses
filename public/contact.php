@@ -1,16 +1,15 @@
 <?php
+ session_start();
  define('__ROOT__', "../app/");
- require_once(__ROOT__ . "model/UserModel.php");
- require_once(__ROOT__ . "model/CourseModel.php");
- require_once(__ROOT__ . "controller/UserController.php");
- require_once(__ROOT__ . "controller/CourseController.php");
+ require_once(__ROOT__ . "model/MessageModel.php");
+ require_once(__ROOT__ . "controller/MessageController.php");
+ //require_once(__ROOT__ . "view/bar.php");
 
+ $model = new Message();
+ $controller = new MessageController($model);
+ //$view = new ViewTable($controller, $model);
  
 
-  $model = new User();
-  //$model = new Course();
-  $controller = new UserController($model);
-  //$controller = new CourseController($model);
   
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
@@ -93,14 +92,8 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 					      		<div id="form-message-success" class="mb-4">
 					            Your message was sent, thank you!
 					      		</div>
-										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<form method="POST" action='contact.php?action=ContactUsMessage' id="contactForm" name="contactForm" class="contactForm">
 											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="name">Full Name</label>
-														<input type="text" class="form-control" name="name" id="name" placeholder="Name">
-													</div>
-												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
 														<label class="label" for="email">Email Address</label>
@@ -109,14 +102,10 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="subject">Subject</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-													</div>
-												</div>
-												<div class="col-md-12">
-													<div class="form-group">
 														<label class="label" for="#">Message</label>
-														<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+														<textarea name="Message" class="form-control" id="Message" cols="30" rows="4" placeholder="Message"></textarea>
+														<input name="receiver" value="<?php echo $receiver;?>"  hidden />
+														<input name="id" value="<?php echo $id;?>"  hidden />
 													</div>
 												</div>
 												<div class="col-md-12">

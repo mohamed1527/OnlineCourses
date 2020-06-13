@@ -37,12 +37,10 @@ class Teacher extends User{
         $id = $_POST['id'];
         $fname = $_POST['FirstName'];
         $lname = $_POST['LastName'];
-       // $password = $_POST['Password'];
         $phone = $_POST['Phone'];
         $image = $_POST['Image'];
         $career = $_POST['Career'];
         $experience = $_POST['Experience'];
-        //$attendence = $_POST['attendence'];
         $updateddate = date("Y/m/d H:i:s");
         
 
@@ -58,12 +56,9 @@ class Teacher extends User{
           $userID = $dbh->query($sql1);
           $row = $dbh->fetchRow($userID);
           $uid = $row['ID'];
-         // echo $uid;
-        // echo "<script>alert('Updated successfully')</script>";
           $sql2 = "UPDATE Teacher
         SET  Career='$career',Experience='$experience',UpdatedDate = '$updateddate'
         WHERE Teacher_ID=$uid";
-        //echo $sql2;
         $result = $dbh->query($sql2);
         
         if($dbh->query($sql2) === true){
@@ -75,7 +70,7 @@ class Teacher extends User{
             $_SESSION['Career']=$career;
             $_SESSION['Experience']=$experience;
             $_SESSION['Phone']=$phone;
-          echo "<script>alert('Updated successfully')</script>";
+            echo "<div class='alert alert-success' role='alert'> Updated Successfully </div>";
          
       } else{
           echo "<script>alert('Not Updated')</script>";

@@ -69,17 +69,13 @@ require_once(__ROOT__ . "controller/Controller.php");
         $pdf->SetFillColor(235, 235, 235);
         $pdf->Cell(189, 7, 'Payment Details', 1, 2, 'C');
 
-        $pdf->Cell(27, 10, 'Fees', 1, 0, 'C', 1);
-        $pdf->Cell(27, 10, 'Tax', 1, 0, 'C', 1);
-        $pdf->Cell(27, 10, 'Discount', 1, 0, 'C', 1);
+        $pdf->Cell(27, 10, 'Section Name', 1, 0, 'C', 1);
         $pdf->Cell(27, 10, 'Total Cost', 1, 0, 'C', 1);
        
         $Y = $pdf->GetY();
         $pdf->SetXY($x, $Y + 10);
+        $pdf->Cell(27, 10, $sectionname, 1, 0, 'C', 0);
         $pdf->Cell(27, 10, $sectioncost, 1, 0, 'C', 0);
-        $pdf->Cell(27, 10, number_format($tax), 1, 0, 'C', 0);
-        $pdf->Cell(27, 10, number_format($discount), 1, 0, 'C', 0);
-        $pdf->Cell(27, 10, number_format($totalAmount), 1, 0, 'C', 0);
        
         $pdf->Ln();
         $Y = $pdf->GetY();
