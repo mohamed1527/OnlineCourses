@@ -291,7 +291,54 @@ function signup($fname,$lname,$email,$password,$phone,$image,$address,$createdDa
       }
     }
     }
-    
+    function passwordchange($password,$token)
+    {
+      $password =  $_POST['password'];
+      $token = $_POST['token'];
+
+      $sql = "SELECT email FROM password_resets WHERE token='$token' LIMIT 1";
+      $dbh = new Dbh();
+      $results = $dbh->query($sql);
+      $email = mysqli_fetch_assoc($results)['email'];
+      
+      if ($email)
+      {
+        $password=md5($password); 
+        //$new_pass = md5($new_pass);
+        $sql2 = "UPDATE User SET password='$password' WHERE email='$email'";
+        $dbh2 = new Dbh();
+        $results2 = $dbh2->query($sql2);
+        header('location: ../public/home.php');
+      }
+      
+    }
+    function reset($email)
+    {
+      $errors = [];
+      $email = $_POST['email'];
+      $sql = "SELECT Email FROM User WHERE email='$email'";
+      $dbh = new Dbh();
+      $results = $dbh->query($sql);
+
+      $token = bin2hex(random_bytes(10));
+      //$token = rand(0,25);
+      $body="Go to this link -> http://localhost/SEmvc7/public/forgetpassword.php where your token = " . $token . " to reset your password";
+      if (count($errors) == 0)
+      {
+        // store token in the password-reset database table against the user's email
+        $sql1 = "INSERT INTO PasswordRest(email, token) VALUES ('$email', '$token')";
+        //$results = mysqli_query($db, $sql);
+        $results = $dbh->query($sql1);
+        //Send email to user with the token in a link they can click on
+        $to = $email;
+        $subject = "Reset your password on OnlineCourse.com";
+        $msg = $body;
+        $msg = wordwrap($msg,70);
+        $headers = "From: StudyRoom@gmail.com";
+        mail($to, $subject, $msg, $headers);
+        header("Location:../public/waiting.php?email=" . $email);
+      }
+    }
   
   
 

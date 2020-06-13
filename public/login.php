@@ -117,7 +117,7 @@
     <i class="fa fa-key icon"></i>
     <input class="input-field" type="password" placeholder="Password" name="password" required>
   </div>
- <a style="margin-left:300px;" href="#">Forget Password?</a>
+ <a style="margin-left:300px;" href="Email.php">Forget Password?</a>
  <a style="margin-left: 420px;" href="signup.php">Don't Have Account?</a>
  <br>
  

@@ -158,10 +158,7 @@ static function addcourses($coursename,$courseweeks,$coursehours,$coursetype,$co
   $courseID = $dbh->query($sql1);
   $row = $dbh->fetchRow($courseID);
   $id = $row['ID'];
-  echo $id;
-
   $sql2 = "INSERT INTO Course_Duration(CourseWeeks,CourseHours,StartDate,End_Date,CourseID,CreatedDate) Values('$courseweeks','$coursehours','$startdate','$enddate',($id),'$createdDate');";
-  echo $sql2;
   if($dbh->query($sql2) === true){
     
     echo "<div class='alert alert-success' role='alert'> Added Course Successfully </div>";

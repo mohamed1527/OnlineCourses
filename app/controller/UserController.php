@@ -62,4 +62,15 @@ class UserController extends Controller{
       echo $id;
       $this->model->deleteuser($id);
     }
+    public function chnagepassword()
+    {
+        $password = $_REQUEST['password'];
+        $token = $_REQUEST['token'];
+        $this->model->passwordchange($password,$token);
+    }
+    public function passreset()
+    {
+        $email = $_REQUEST['email'];
+        $this->model->reset($email);
+    }
   }
