@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="http://localhost/SEmvc7/lib/css/mycss.css">
 </head>
 <body>
-<form  method = "post" action="showmessages.php?action=DeleteMessage">
+<form  method = "post" action="showmessages.php">
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -33,6 +33,7 @@
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
+                <th>ID</th>
                 <th>Sender</th>
                 <th>Receiver</th>
                 <th>Messages</th>
@@ -47,10 +48,7 @@
 
 ?>
 <tr> 
-<td></td>
-<td></td> 
-<td></td>   
-<td> <button type="submit" class="btn btn-default">Delete</button> </td>
+<td><input type="hidden" name="id" id="id" value='<?php echo $id;?>'></td>   
    </table>
    </div>    
 </div>
