@@ -79,7 +79,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 <br>
 <br>
 <div id="paypal-button-container"></div>
-<script src="https://www.paypal.com/sdk/js?client-id=ARSm1X8bsvvjGrbkr4o8bNcusARoQkVJm21N8l3dCITdaYP4PezcF8EJQ4SD4mIOkjx9EkMHRpOQ_hZP&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
   paypal.Buttons({
       style: {
@@ -101,24 +101,11 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
       onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
               alert('Transaction completed by ' + details.payer.name.given_name + '!');
-             
           });
       }
   }).render('#paypal-button-container');
 </script>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="5RGZTBCNPVCQ6">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="7U7FGQL5DKDUG">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
 
 </body>
 </html>
